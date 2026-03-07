@@ -29,11 +29,12 @@ class CarWashStation:
             car.clean_mark = self.clean_power
 
     def serve_cars(self, cars_list: list[Car]) -> float:
-        total_income = 0
+        total_income = 0.0
 
         for car in cars_list:
-            if car.clean_mark < self.clean_power:
-                price = self.calculate_washing_price(car)
+            price = self.calculate_washing_price(car)
+
+            if price > 0:
                 self.wash_single_car(car)
                 total_income += price
         return round(total_income, 1)
